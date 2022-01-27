@@ -9,16 +9,10 @@ import androidx.fragment.app.FragmentManager;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.navigation.NavigationView;
 
-public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class MainActivity extends AppCompatActivity {
 
-    private GoogleMap mMap;
     private DrawerLayout mDrawer;
     private NavigationView nvDrawer;
     private ActionBarDrawerToggle drawerToggle;
@@ -43,6 +37,18 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         drawerToggle.syncState();
 
         mDrawer.addDrawerListener(drawerToggle);
+
+        Fragment fragment = null;
+        try {
+            fragment = (Fragment) Home.class.newInstance();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        }
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
     }
 
     @Override
@@ -72,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         switch(menuItem.getItemId()) {
             case R.id.nav_first_fragment:
-                fragmentClass = MainActivity.class;
+                fragmentClass = Home.class;
                 break;
             case R.id.nav_second_fragment:
                 fragmentClass = Maps.class;
@@ -100,15 +106,5 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         setTitle(menuItem.getTitle());
         // Close the navigation drawer
         mDrawer.closeDrawers();
-    }
-
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
-
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 }
