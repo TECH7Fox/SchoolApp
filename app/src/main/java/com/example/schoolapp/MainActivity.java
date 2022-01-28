@@ -86,6 +86,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.nav_third_fragment:
                 fragmentClass = Activities.class;
                 break;
+            case R.id.nav_fourth_fragment:
+                fragmentClass = Floorplan.class;
+                break;
             default:
                 throw new IllegalStateException("Unexpected value: " + menuItem.getItemId());
         }
