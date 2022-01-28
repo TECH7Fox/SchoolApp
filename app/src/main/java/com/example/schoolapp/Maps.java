@@ -18,8 +18,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class Maps extends Fragment implements OnMapReadyCallback {
 
     private MapView mapView;
-    private GoogleMap mMap;
-    private View view;
 
     public Maps() {
         super(R.layout.fragment_maps);
@@ -27,10 +25,10 @@ public class Maps extends Fragment implements OnMapReadyCallback {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        this.view = inflater.inflate(R.layout.fragment_maps, container, false);
-        MapsInitializer.initialize(getContext());
+        View view = inflater.inflate(R.layout.fragment_maps, container, false);
+        MapsInitializer.initialize(requireContext());
 
-        this.mapView = (MapView) view.findViewById(R.id.map);
+        this.mapView = view.findViewById(R.id.map);
         this.mapView.onCreate(savedInstanceState);
         this.mapView.getMapAsync(this);
         return view;
@@ -38,12 +36,10 @@ public class Maps extends Fragment implements OnMapReadyCallback {
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
 
         LatLng latLng = new LatLng(52.64759024435437, 5.0512884089843295);
-        mMap.addMarker(new MarkerOptions().position(latLng).title("Horizon College"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 17));
+        googleMap.addMarker(new MarkerOptions().position(latLng).title("Horizon College"));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 17));
     }
 
     @Override

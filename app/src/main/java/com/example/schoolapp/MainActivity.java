@@ -6,6 +6,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -16,7 +17,6 @@ import com.google.android.material.navigation.NavigationView;
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawer;
-    private NavigationView nvDrawer;
     private ActionBarDrawerToggle drawerToggle;
 
     @Override
@@ -24,15 +24,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Find our drawer view
-        nvDrawer = (NavigationView) findViewById(R.id.nvView);
-        // Setup drawer view
+        NavigationView nvDrawer = findViewById(R.id.nvView);
         setupDrawerContent(nvDrawer);
 
-        // This will display an Up icon (<-), we will replace it with hamburger later
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawer = findViewById(R.id.drawer_layout);
         drawerToggle = new ActionBarDrawerToggle(this, mDrawer, R.string.drawer_open, R.string.drawer_close);
 
         drawerToggle.setDrawerIndicatorEnabled(true);
@@ -59,10 +56,8 @@ public class MainActivity extends AppCompatActivity {
         if (item.getItemId() == R.id.share) {
             Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
             sharingIntent.setType("text/plain");
-            String shareBodyText = "Link naar de app store!";
-            sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,"Opendag App");
-            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBodyText);
-            startActivity(Intent.createChooser(sharingIntent, "Share App"));
+            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, Helper.getConfig(getApplicationContext(), "share_link"));
+            startActivity(Intent.createChooser(sharingIntent, getString(R.string.share_title)));
             return true;
         }
 
@@ -80,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
             });
     }
 
+    @SuppressLint("NonConstantResourceId")
     public void selectDrawerItem(MenuItem menuItem) {
         Class fragmentClass;
 
