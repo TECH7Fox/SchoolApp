@@ -1,12 +1,16 @@
 package com.example.schoolapp;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import androidx.core.app.NotificationCompat;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 
@@ -20,7 +24,22 @@ import com.google.android.gms.maps.model.GroundOverlayOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MapStyleOptions;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.StringWriter;
+import java.io.UnsupportedEncodingException;
+import java.io.Writer;
+import java.lang.reflect.Array;
 
 public class Floorplan extends Fragment implements OnMapReadyCallback {
 
@@ -58,10 +77,45 @@ public class Floorplan extends Fragment implements OnMapReadyCallback {
         mMap.setMinZoomPreference(18);
         mMap.setMaxZoomPreference(21);
 
-        // TODO: Make loop for markers
-        mMap.addMarker(new MarkerOptions().position(latLng).title("Horizon College").snippet("Software Developer"));
+        JSONArray array = null;
+        try {
+            array = new JSONArray(getJsonFromAssets(getContext()));
+            for (int i = 0; i < array.length(); i++) {
+                JSONObject marker = array.getJSONObject(i);
+                mMap.addMarker(new MarkerOptions()
+                    .position(new LatLng(marker.optDouble("lat"), marker.optDouble("lng")))
+                    .title(marker.optString("title"))
+                    .snippet(marker.optString("snippet"))
+                );
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        Log.d("JSON", getJsonFromAssets(getContext()));
+
+
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 19));
+    }
+
+    static String getJsonFromAssets(Context context) {
+        String jsonString;
+        try {
+            InputStream is = context.getResources().openRawResource(R.raw.markers);
+
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+
+            jsonString = new String(buffer, "UTF-8");
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        return jsonString;
     }
 
     @Override

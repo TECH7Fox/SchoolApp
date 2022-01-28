@@ -1,0 +1,50 @@
+[
+  {
+    "lat": "-0.000297",
+    "lng": "-0.000234",
+    "title": "Ingang",
+    "snippet": ""
+  },
+  {
+    "lat": "0.000205524",
+    "lng": "0.0000593438",
+    "title": "C001",
+    "snippet": "Applicatie- en Media Ontwikkelaar"
+  },
+  {
+    "lat": "-0.00002408",
+    "lng": "0.0003688",
+    "title": "C005",
+    "snippet": "Applicatie Beheer"
+  },
+  {
+    "lat": "0.000205524",
+    "lng": "0.00026219",
+    "title": "C003",
+    "snippet": "IT"
+  },
+  {
+    "lat": "0.0002638",
+    "lng": "-0.0003165",
+    "title": "B011",
+    "snippet": "Tuin en Recreatie"
+  },
+  {
+    "lat": "0.000046693",
+    "lng": "-0.00048313",
+    "title": "B001",
+    "snippet": "Groen"
+  },
+  {
+    "lat": "0.0002903",
+    "lng": "-0.0007302",
+    "title": "B005",
+    "snippet": "Dierenverzorging"
+  },
+  {
+    "lat": "-0.0003165",
+    "lng": "0.00000347",
+    "title": "D001",
+    "snippet": "Electrotechniek"
+  }
+]
