@@ -4,18 +4,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-import com.google.android.material.navigation.NavigationView;
+import org.json.JSONArray;
+import org.json.JSONException;
 
 public class Activities extends Fragment {
-
-    String[] values = {"Film 18:30", "Rondleiding 19:00", "Workshop 20:00"};
 
     public Activities() {
         super(R.layout.fragment_activities);
@@ -25,13 +21,15 @@ public class Activities extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_activities, container, false);
 
         ListView listView = rootView.findViewById(R.id.listView);
-
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-            getActivity(),
-            android.R.layout.simple_list_item_1,
-            android.R.id.text1,
-            values
-        );
+        CustomAdapter adapter = null;
+        try {
+            adapter = new CustomAdapter(
+                requireContext(),
+                new JSONArray(Helper.getJsonFromAssets(requireContext(), R.raw.activities))
+            );
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         listView.setAdapter(adapter);
 
         return rootView;

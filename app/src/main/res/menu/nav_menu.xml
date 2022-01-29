@@ -4,18 +4,18 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_first_fragment"
-            android:title="Home"
+            android:id="@+id/home"
+            android:title="@string/home"
             android:checked="true" />
         <item
-            android:id="@+id/nav_second_fragment"
-            android:title="Maps" />
+            android:id="@+id/maps"
+            android:title="@string/maps" />
         <item
-            android:id="@+id/nav_third_fragment"
-            android:title="Activities" />
+            android:id="@+id/activities"
+            android:title="@string/activities" />
 
         <item
-            android:id="@+id/nav_fourth_fragment"
-            android:title="Floorplan" />
+            android:id="@+id/floorplan"
+            android:title="@string/floorplan" />
     </group>
 </menu>

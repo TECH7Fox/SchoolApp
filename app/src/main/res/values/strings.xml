@@ -3,6 +3,11 @@
     <string name="title_activity_maps">MapsActivity</string>
     <string name="drawer_open">open</string>
     <string name="drawer_close">close</string>
-    <string name="open_dag">OPEN DAG</string>
+    <string name="open_dag">OPEN DAY</string>
     <string name="share_title">Share App</string>
+    <string name="share">Share</string>
+    <string name="home">Home</string>
+    <string name="maps">Maps</string>
+    <string name="activities">Activities</string>
+    <string name="floorplan">Floorplan</string>
 </resources>

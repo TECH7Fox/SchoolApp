@@ -80,16 +80,16 @@ public class MainActivity extends AppCompatActivity {
         Class fragmentClass;
 
         switch(menuItem.getItemId()) {
-            case R.id.nav_first_fragment:
+            case R.id.home:
                 fragmentClass = Home.class;
                 break;
-            case R.id.nav_second_fragment:
+            case R.id.maps:
                 fragmentClass = Maps.class;
                 break;
-            case R.id.nav_third_fragment:
+            case R.id.activities:
                 fragmentClass = Activities.class;
                 break;
-            case R.id.nav_fourth_fragment:
+            case R.id.floorplan:
                 fragmentClass = Floorplan.class;
                 break;
             default:
