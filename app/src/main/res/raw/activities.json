@@ -1,12 +1,26 @@
 [
   {
-    "place": "A101",
-    "activity": "Film",
-    "time": "18:30"
+    "place": "Aula",
+    "activity": "De Opening",
+    "time": "17:00",
+    "description": "De opening van de open dag."
   },
   {
-    "place": "A102",
+    "place": "A001",
+    "activity": "Film",
+    "time": "17:30",
+    "description": "Hier word de film Jurassic Park afgespeeld."
+  },
+  {
+    "place": "Aula",
     "activity": "Rondleiding",
-    "time": "19:30"
+    "time": "18:00",
+    "description": "Een rondleiding van de school."
+  },
+  {
+    "place": "B011",
+    "activity": "Voorlichtingsbijeenkomst",
+    "time": "18:30",
+    "description": "Informatie over de school en opleidingen."
   }
 ]

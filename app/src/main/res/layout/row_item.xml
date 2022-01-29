@@ -7,7 +7,6 @@
     android:padding="10dp"
     android:stretchColumns="0">
 
-
     <TableRow
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
@@ -43,6 +42,19 @@
             android:layout_height="wrap_content"
             android:text="18:30"
             tools:ignore="HardcodedText" />
+
+    </TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent">
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="258dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:text="Hier word de film Jurassic Park afgespeeld." />
 
     </TableRow>
 </TableLayout>

@@ -11,6 +11,7 @@ import android.widget.TextView;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 public class CustomAdapter extends BaseAdapter {
     JSONArray array;
@@ -46,10 +47,12 @@ public class CustomAdapter extends BaseAdapter {
             TextView placeView = view.findViewById(R.id.place);
             TextView timeView = view.findViewById(R.id.time);
             TextView activityView = view.findViewById(R.id.activity);
+            TextView descriptionView = view.findViewById(R.id.description);
 
             placeView.setText(activity.getString("place"));
             timeView.setText(activity.getString("time"));
             activityView.setText(activity.getString("activity"));
+            descriptionView.setText(activity.getString("description"));
         } catch (JSONException e) {
             e.printStackTrace();
         }

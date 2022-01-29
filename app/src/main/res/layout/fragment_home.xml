@@ -46,7 +46,8 @@
                     android:layout_marginRight="3dp"
                     android:fontFamily="sans-serif"
                     android:gravity="center"
-                    android:text="27 FEB"
+                    android:text="27 Feb"
+                    android:textAllCaps="true"
                     android:textAlignment="center"
                     android:textSize="28sp"
                     android:textStyle="bold" />
@@ -59,6 +60,7 @@
                     android:fontFamily="sans-serif"
                     android:gravity="center"
                     android:text="@string/open_dag"
+                    android:textAllCaps="true"
                     android:textAlignment="center"
                     android:textSize="28sp" />
             </LinearLayout>
@@ -76,7 +78,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
                 android:gravity="center"
-                android:text="HORIZON COLLEGE"
+                android:text="Horizon College"
+                android:textAllCaps="true"
                 android:textAlignment="center"
                 android:textSize="28sp"
                 android:textStyle="bold" />
